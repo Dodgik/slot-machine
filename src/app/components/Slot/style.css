@@ -1,0 +1,18 @@
+.digits {
+  border-right: 1px solid rgba(0, 0, 0, 0.9);
+  float: left;
+  list-style-type: none;
+  font-size: 100px;
+  line-height: 100px;
+  text-align: center;
+  padding: 0;
+}
+  .digits:first-child {
+    border-left: 1px solid rgba(0, 0, 0, 0.9);
+  }
+
+  .digits > li {
+    background-color: #D8D8D8;
+    height: 100px;
+    width: 100px;
+  }

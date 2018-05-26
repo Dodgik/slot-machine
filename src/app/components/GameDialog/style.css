@@ -1,0 +1,7 @@
+div.visible {
+  visibility: visible;
+}
+
+div.center {
+  justify-content: center;
+}
