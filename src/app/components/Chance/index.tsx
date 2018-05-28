@@ -10,6 +10,7 @@ export interface ChanceProps {
 
 export interface ChanceState {
   value: number;
+  isSetChance: boolean;
 }
 
 export class Chance extends React.Component<ChanceProps, ChanceState> {
@@ -17,11 +18,13 @@ export class Chance extends React.Component<ChanceProps, ChanceState> {
     super(props, context);
     this.state = {
       value: props.chance || 0,
+      isSetChance: false,
     };
   }
 
   private handleClickSet = (e: React.SyntheticEvent<any>) => {
     this.props.setChance(this.state.value);
+    this.setState({ isSetChance: true });
   }
 
   valueFormat = (val) => {
@@ -34,23 +37,28 @@ export class Chance extends React.Component<ChanceProps, ChanceState> {
 
   handleValueChange = (e) => {
     if (e.floatValue <= 100) {
-      this.setState({ value: e.floatValue })
+      this.setState({ value: e.floatValue });
     }
   }
 
   render() {
-    return (
-      <div>
-        <h2 className={style.title}>Set a chance to win</h2>
-        <NumberFormat
-          value={this.state.value}
-          format={this.valueFormat}
-          onValueChange={this.handleValueChange}
-          className={style.numberInput}
-         />
-        <Button variant="outlined" onClick={this.handleClickSet}>Set</Button>
-      </div>
-    );
+    if (this.state.isSetChance) {
+      return <h2>Chance is set to {this.props.chance}%</h2>
+    } else {
+      return (
+        <div>
+          <h2 className={style.title}>Set a chance to win</h2>
+          <NumberFormat
+            value={this.state.value}
+            format={this.valueFormat}
+            onValueChange={this.handleValueChange}
+            className={style.numberInput}
+           />
+          <Button variant="outlined" onClick={this.handleClickSet}>Set</Button>
+        </div>
+      );
+    }
+
   }
 }
 

@@ -43,7 +43,6 @@ export class Slots extends React.Component<SlotsProps, SlotsState> {
 
   render() {
     const { result, session, isWin } = this.props.game;
-    console.warn('Slots->render=', result, ' openDialog=', this.state.openDialog);
     return (
       <div>
         <Grid container wrap="nowrap" justify="center" direction="column" alignItems="center" spacing={24}>

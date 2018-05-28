@@ -12,7 +12,7 @@ export class GameStore {
 
   @observable public slotsNumber: number = 3;
 
-  @observable public spinNumber: number = 3;
+  @observable public spinNumber: number = 6;
   
   @action
   setChance = (chance: number): void => {
